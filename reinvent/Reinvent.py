@@ -34,7 +34,7 @@ from reinvent import version, runmodes
 from reinvent.utils import setup_logger
 from reinvent.runmodes.utils import set_torch_device
 from reinvent.runmodes.handler import StageInterruptedControlled
-from .validation import ReinventConfig
+from validation import ReinventConfig
 
 
 rdBase.DisableLog("rdApp.*")
@@ -149,7 +149,7 @@ def main(args: Any):
     if "json_out_config" in input_config:
         json_out_config = os.path.abspath(input_config["json_out_config"])
         logger.info(f"Writing JSON config file to {json_out_config}")
-        write_config = write_json_config(val_config.model_dump(), json_out_config)
+        write_config = write_json_config(val_config.dict(), json_out_config)
 
     responder_config = input_config.get("responder", None)
 
